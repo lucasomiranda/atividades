@@ -1,0 +1,11 @@
+let nome;
+let idade;
+let cidade;
+
+nome = prompt("qual seu nome?")
+idade = prompt("qual sua idade?")
+cidade = prompt ("qual sua cidade?")
+
+alert("seu nome é " + nome)
+alert("você tem " + idade + " anos")
+alert("sua cidade é " + cidade)
