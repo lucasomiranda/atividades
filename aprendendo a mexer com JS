@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scripts</title>
+    
+</head>
+<body>
+
+    <button id = "meu_botao" >mudar fundo para vermelho</button>
+    <button id="ui_boton">mudar fundo para verde</button>
+<script src="script.js"></script>
+</body>
+</html>
+
+	//colocar no JS
+
+document.querySelector('#meu_botao')?.addEventListener('click', () => {
+    document.body.style.backgroundColor = "red"
+});
+
+document.querySelector('#ui_boton')?.addEventListener('click', () => {
+    document.body.style.backgroundColor = "green"
+});
