@@ -1,0 +1,18 @@
+let nota = Number(prompt("digite sua nota"))
+let nota2 = Number(prompt("digite sua outra nota"))
+
+media = (nota + nota2)/ 2
+
+let exibir_media = media
+
+document.writeln(exibir_media)
+
+
+
+if (media >= 0 && nota <= 4.5){
+    document.writeln(" você foi reprovado! ")
+} else if (media >= 4.6 && nota <= 6.5){
+    document.writeln(" você está de recuperação ")
+} else if (media >= 6.6 && nota <= 10){
+    document.writeln("você passou!")
+}
