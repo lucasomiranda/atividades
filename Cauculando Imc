@@ -1,0 +1,9 @@
+let peso;
+let altura;
+
+peso = prompt("qual seu peso?")
+altura = prompt("qual sua altura?")
+
+resultado = peso/(altura*altura)
+
+document.writeln("imc cauculado: ", resultado)
