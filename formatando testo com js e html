@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style2.css">
+    <script src="script2.js" defer></script>
+</head>
+<body>
+   <form action="">
+    <input type="text" id="inp-nome"placeholder="digite seu nome">
+    <input type="text" id="inp-idd" placeholder="digite sua idade">
+    <input type="text" id="inp-cid" placeholder="digite sua cidade">
+    
+    
+    
+    <button type="button" id="bnt-fomr">formatar</button>
+    <div id = "msg-div"></div>
+   </form>
+
+
+
+</body>
+
+//js
+
+let botao = document.querySelector('#bnt-fomr');
+
+let msg = document.querySelector('#msg-div');
+
+
+botao.addEventListener('click', () => {
+    let nome = String(document.getElementById('inp-nome').value)
+
+    let cidade = String(document.getElementById('inp-cid').value)
+
+    let idade = Number(document.getElementById('inp-idd').value)
+
+    texto = ''
+
+  if (cidade == '' || nome == '' || idade == ''){
+    texto = 'digite algo valido'
+  } else{
+    
+    texto = 'Seu nome é ' + nome + " você tem " + idade + " anos " + " e mora em " + cidade
+     
+  }
+
+  msg.innerHTML = "<p>" + texto + '</p>'
+
+});
+</html>
