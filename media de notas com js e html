@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<form action="">
+    
+    <input type="text" id="inp-nota" placeholder="digite sua primeira nota">
+    <input type="text" id="inp-nota2" placeholder="digite sua segunda nota">
+    
+    <button type="button" id="bnt-calc">caucular media</button>
+    <div id="msg-div"></div>
+</form>
+</body>
+</html>
+
+//js (digite a o menos uma das notas com ponto ex: 7.0, 6.9)
+
+let botao = document.querySelector('#bnt-calc')
+let msg = document.querySelector('#msg-div')
+
+
+botao.addEventListener('click', () => {
+    let nota =  Number(document.getElementById('inp-nota').value)
+    let nota2 = Number(document.getElementById('inp-nota2').value)
+    let media = (nota + nota2)/ 2
+    let texto = ''
+
+    if ( media <= 4.5){
+        texto = ' você foi reprovado! '
+    } else if ( media <= 6.5){
+        texto = ' você está de recuperação '
+    } else if ( media <= 10){
+        texto = 'você passou!'
+    } else {
+        texto = 'invalido'
+    }
+
+    msg.innerHTML = "<p>" + texto + '</p>'
+});
