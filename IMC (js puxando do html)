@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style3.css">
+    <script src="script3.js" defer></script>
+</head>
+<body>
+<form action="" >
+    <input type="int" name="" id="inp-peso" placeholder="digite seu peso">
+    <br><br>
+    <input type="int" name="" id="inp-altura" placeholder="digite sua altura">
+    <br><br>
+    <button type="button" id="imc">calcular imc</button>
+    <br>
+    <div id="msg-div"></div>
+</form>
+
+</body>
+</html>
+
+
+//js
+
+let botao = document.querySelector('#imc')
+let mensagem = document.querySelector('#msg-div')
+
+botao.addEventListener('click', () => {
+
+    let peso = Number(document.getElementById('inp-peso').value)
+    let altura = Number(document.getElementById('inp-altura').value)
+    let texto = ''
+    
+    if (peso > 0 && altura > 0){
+        let resultado = peso/(altura*altura)
+    
+        texto = 'seu imc é: ' + resultado
+
+        mensagem.innerHTML = "<p>" + texto + '</p>'
+    } else{
+        mensagem.innerHTML ="<p> insira um numero valido"
+    }
+});
