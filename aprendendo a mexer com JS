@@ -32,3 +32,4 @@ document.querySelector('#tic')?.addEventListener('click', () => {
 
 document.querySelector('#msg')?.addEventListener('click', () => {
     alert("seja bem-vindo ao meu app da aula 01 Introdução ao JavaScript")
+});
