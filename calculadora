@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src = "atividades.js" defer></script>
+</head>
+<body>
+    <form action="">
+        <input type="text" name="" id="num1-inp" placeholder="digite o primeiro numero">
+        <input type="text" name="" id="op-inp" placeholder="digite aqui o operador">
+        <input type="text" name="" id="num2-inp" placeholder="digite o segundo numero">
+
+        <button type="button" id="resp-bnt">resposta</button>
+
+        <div id="msg"></div>
+
+
+    </form>
+</body>
+</html>
+
+
+//js
+
+let botao = document.querySelector('#resp-bnt')
+let msg = document.querySelector('#msg')
+
+botao.addEventListener('click', () => {
+
+    texto = ''
+
+    let num1 = Number(document.getElementById('num1-inp').value)
+
+    let num2 = Number(document.getElementById('num2-inp').value)
+
+    let op = document.getElementById('op-inp')
+
+    if (op.value == "+" ){
+        texto = num1 + num2
+    } else if (op.value == "-" ){
+        texto = num1 - num2
+    } else if (op.value == "/" ){
+        texto = num1 / num2
+    } else if (op.value == "x" ){
+        texto = num1 * num2
+    }
+
+    msg.innerHTML = "<p> o resultado de: " + num1 + " " + op.value + " " + num2 + " é: " + texto + '</p>'
+
+
+
+});
+
