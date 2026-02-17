@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src = "atividades.js" defer></script>
+</head>
+<body>
+    <form action="">
+        <input type="text" name="" id="nome-inp" placeholder="digite o nome do produto">
+        <br><br>
+        <input type="text" name="" id="qnt-inp" placeholder="a quantidade do produto">
+        <br><br>
+        <input type="text" name="" id="val-inp" placeholder="e o valor do produto">
+        <br><br>
+        <button type="button" id="resp-bnt"> ir </button>
+        <br>
+        <div id="msg"></div>
+
+
+    </form>
+</body>
+</html>
+
+// js
+
+
+let botao = document.querySelector('#resp-bnt')
+let msg = document.querySelector('#msg')
+
+botao.addEventListener('click', () => {
+
+    let nome = document.getElementById('nome-inp').value
+
+    let quantidade = Number(document.getElementById('qnt-inp').value)
+
+    let  preco = document.getElementById('val-inp').value
+    
+
+    if (nome == "" || quantidade == "" || preco == ""){
+        texto = ' Error: insira valores validos, não nulos'
+        cor = 'red'
+    } else {
+        texto = 'nome: ' + nome + ', quantidade: ' + quantidade + ', preco: R$' + preco;
+        cor = 'black'
+    }
+
+    msg.innerHTML = "<p style = ' color: "+cor+ "';> " + texto + '</p>'
+})
