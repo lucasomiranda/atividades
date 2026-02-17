@@ -45,11 +45,16 @@ botao.addEventListener('click', () => {
         texto = num1 / num2
     } else if (op.value == "x" ){
         texto = num1 * num2
+    } else if (op.value == "%"){
+        texto = num1 % num2
+    }  else if (op.value == "**"){
+        texto = num1 ** num2
     }
-
     msg.innerHTML = "<p> o resultado de: " + num1 + " " + op.value + " " + num2 + " é: " + texto + '</p>'
 
 
 
 });
+
+
 
