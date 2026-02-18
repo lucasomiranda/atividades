@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="imc.js" defer></script>
+    <link rel="stylesheet" href="style87.css">
+</head>
+<body>
+
+    <div>
+        <form action="">
+            <h1>Jogo do Número Secreto</h1>
+            <input type="number" name="" id="inp-num" > 
+            <button type="button" id="bnt-v" aria-placeholder="0">verificar</button>
+            <div id="msg-div"></div> <br>
+            
+        </form>
+    </div>
+
+</body>
+</html>
+
+//css
+
+div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+input{
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    justify-content: center;
+}
+
+button{
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    nav-up: auto;
+}
+
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #4CAF50, blue);
+}
+
+//js
+
+let button = document.querySelector('#bnt-v')
+
+let numero_secreto = Math.floor(Math.random() * 10) + 1;
+
+let tentativas = 3;
+
+
+mensagem = document.querySelector('#msg-div')
+
+button.addEventListener('click', () => {
+    texto=''
+    let numero = Number(document.getElementById('inp-num').value)
+        
+    if (numero == numero_secreto){
+        texto = 'parabens você acertou'
+        button.remove()
+
+    } else  if (numero == '' || isNaN(numero)){
+        texto = 'coloque um numero valido'
+        
+    } else if (numero > numero_secreto){
+        texto = 'muito alto'
+        tentativas--
+    } else {
+        texto = 'muito baixo'
+        tentativas--
+
+    } if (tentativas == 0) {
+        texto = 'vc n tem mais tentativas'
+        button.remove()}
+   
+    tentativas == 0 ? texto = 'suas tentativas acabaram o numero era ' + numero_secreto : texto = texto + ' você tem ' + tentativas + ' tentativas restantes'
+
+    mensagem.innerHTML = "<p>" + texto + '</p>'
+    
+});
