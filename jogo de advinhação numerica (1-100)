@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="imc.js" defer></script>
+    <link rel="stylesheet" href="style87.css">
+</head>
+<body>
+
+    <div>
+        <form action="">
+            <h1>Jogo do Número Secreto</h1>
+            <input type="int" name="" id="inp-num" >
+            <button type="button" id="bnt-v">verificar</button>
+            <div id="msg-div"></div>
+        </form>
+    </div>
+
+</body>
+</html>
+
+//css
+
+div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+//js
+
+let button = document.querySelector('#bnt-v')
+
+let numero_secreto = Math.floor(Math.random() * 100) + 1;
+
+let tentativas = 3;
+
+
+
+mensagem = document.querySelector('#msg-div')
+
+button.addEventListener('click', () => {
+    texto=''
+    let numero = Number(document.getElementById('inp-num').value)
+        
+    if (numero == numero_secreto){
+        texto = 'parabens você acertou'
+
+    } else if (numero <=0 ){
+        texto = 'coloque um numero valido'
+        
+    } else if (numero > numero_secreto){
+        texto = 'muito alto'
+        tentativas--
+    } else if (numero < numero_secreto){
+        texto = 'muito baixo'
+        tentativas--
+    } else if (tentativas == 0) {
+        texto = 'vc n tem mais tentativas'
+    } else if (numero != numero_secreto){
+        texto = numero
+    }
+
+
+    mensagem.innerHTML = "<p>" + texto + '</p>'
+    
+    
+});
