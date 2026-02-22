@@ -1,0 +1,130 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="loja.js" defer></script>
+    <link rel="stylesheet" href="loja.css">
+</head>
+<body>
+<form action="">
+    <label for="achar">Nome:</label>
+    <br>
+    <input type="text" id="incrementar">
+    <label for="">quantidade:</label>
+    <input type="text" name="" id="quantidade" value="">
+    <button type="button" id="inc-bnt">Incluir</button>
+    <br> <br>
+    <button type="button" id="exc-1">Excluir </button>
+    <br> <br>
+    <input type="checkbox" id="excluir">
+    <div id="msg"></div>
+    <br> <br>
+    <label for="achar">Achar um produto:</label>
+    <br>
+    <input type="text" id="achar" value="">
+    <button type="button" id="procurar">Procurar</button>
+    <div id="msg-inclus"></div>
+    
+</form>
+</body>
+</html>
+
+
+
+//css
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color: #f0f0f0;
+
+}
+
+form{
+    background-color: rgb(195, 215, 9);
+    width: 300px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin: 50px auto;
+    align-items: center;
+}
+
+input[type="text"]{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+}
+
+button{
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+button:hover{
+    background-color: blueviolet;
+}
+
+.excluir{
+    background-color: red;
+    color: white;
+    padding: 20px 30px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+//js
+
+let botao = document.querySelector('#inc-bnt')
+let botao2 = document.querySelector('#exc-1')
+let botao3 = document.querySelector('#exc-ult')
+let botao4 = document.querySelector('#procurar')
+let mensagem = document.querySelector('#msg')
+let mensagem2 = document.querySelector('#msg-inclus')
+let produtos = []
+
+    
+botao.addEventListener('click', () => {
+    let nome = document.getElementById('incrementar').value
+    let quantidade = document.getElementById('quantidade').value
+
+    let texto = ''
+
+    produtos.push({ id: produtos.length + 1, nome: nome, quantidade: quantidade })
+
+    texto = 'lista de produtos:  <br>' + produtos.map(p => " nome: " + p.nome +" "+ p.quantidade + "x" ).join('<br>')
+
+    if (produtos.length > 0) {
+        texto += '<br> total de produtos: ' + produtos.length
+    }
+
+    mensagem.innerHTML= "<p>" + texto + '</p>'
+})
+
+botao2.addEventListener('click', () => {
+    let excluir = document.getElementById('excluir')
+    if (excluir.checked && produtos.length > 0) {
+        produtos.splice(0, produtos.length) // Exclui todos os produtos
+         mensagem.innerHTML = "<p>Todos os produtos foram excluídos.</p>"
+         let texto = 'lista de produtos:  <br>' + produtos.map(p => " nome: " + p.nome +" "+ p.quantidade + "x" ).join('<br>')
+        mensagem.innerHTML= "<p>" + texto + '</p>'
+    }
+    
+})
+
+botao4.addEventListener('click', () => {
+    let id = document.getElementById('achar').value
+    let produto = produtos.find(p => p.id == id || p.nome == id)
+    if (produto) {
+        mensagem2.innerHTML = "<p>Produto encontrado: " + produto.nome + "</p>"
+    } else {
+        mensagem2.innerHTML = "<p>Produto não encontrado</p>"
+    }
+})
+
