@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="atividades.js" defer></script>
+</head>
+<body>
+    <label for="nome">nome:</label>
+    <input type="text" id="nome" name="nome">
+    <label for="data_nascimento">data de nascimento:</label>
+    <input type="date" id="data_nascimento" name="data_nascimento">
+    <label for="email">email:</label>
+    <input type="email" id="email" name="email">
+    <label for="cpf">cpf:</label>
+    <input type="text" id="cpf" name="cpf">
+    <label for="">id</label>
+    <input type="text" id="id" name="id">
+    <button type="button" id="enviar">enviar</button>
+    <div id="paragrafo"></div>
+    <br> <br>
+    <label for="excluir">excluir</label>
+    <input type="text" id="excluir" name="excluir">
+    <button type="button" id="botao_excluir">excluir</button>
+    <label for="achar">achar</label>
+    <input type="text" id="achar" name="achar">
+    <button type="button" id="botao_achar">achar</button>
+    <div id="paragrafo2"></div>
+    <label for="">alterar</label>
+    <input type="text" id="alterar" name="alterar">
+    <button type="button" id="botao_alterar">alterar</button>
+
+    
+</body>
+</html>
+
+
+// js
+
+let paragrafo = document.getElementById('paragrafo');
+let paragrafo2 = document.getElementById('paragrafo2');
+let enviar = document.querySelector('#enviar');
+let botao_achar = document.querySelector('#botao_achar');
+let botao_alterar = document.querySelector('#botao_alterar');
+dados = [];
+
+enviar.addEventListener('click', function() {
+    let cpf = document.getElementById('cpf');
+    let nome = document.getElementById('nome');
+    let data_nascimento = document.getElementById('data_nascimento');
+    let email = document.getElementById('email');
+    if (cpf.value.length < 11) {
+        alert('CPF deve conter 11 dígitos');
+        return;
+    }
+    if (nome.value.length < 3) {
+        alert('Nome deve conter pelo menos 3 caracteres');
+        return;
+    }
+    if (data_nascimento.value === '') {
+        alert('Data de nascimento é obrigatória');
+        return;
+    }
+    if (email.value === '') {
+        alert('Email é obrigatório');
+        return;
+    }
+    dados.push({
+        cpf: cpf.value,
+        nome: nome.value,
+        data_nascimento: data_nascimento.value,
+        email: email.value
+    });
+
+    texto = 'CPF: ' + cpf.value + '<br>' +
+            'Nome: ' + nome.value + '<br>' +
+            'Data de Nascimento: ' + data_nascimento.value + '<br>' +
+            'Email: ' + email.value + '<br><br>';
+
+    paragrafo.innerHTML += texto;
+
+});
+
+ 
+function exclusion() {
+    let element = document.getElementById('excluir');
+    let excluir = dados.find(p => p.nome === element.value || p.cpf === element.value);
+
+    if (excluir) {
+    dados = dados.filter(p => p !== excluir);
+    paragrafo2.innerHTML += '<br> <p>Elemento excluído: ' + excluir.nome + '<br> - CPF: ' + excluir.cpf + '<br> - data de nascimento: ' + excluir.data_nascimento + '<br> email: ' + excluir.email + '</p>';
+    } else {
+    paragrafo2.textContent = 'Elemento não encontrado';
+    }
+}
+
+let botao_excluir = document.getElementById('botao_excluir');
+botao_excluir.addEventListener('click', exclusion);
+
+botao_achar.addEventListener('click', function() {
+    let element = document.getElementById('achar');
+    let enc = dados.find(p => p.nome === element.value || p.cpf === element.value);
+    if (enc) {
+        paragrafo2.innerHTML += '<br> <p>Elemento encontrado: ' + enc.nome + '<br> - CPF: ' + enc.cpf + '<br> - data de nascimento: ' + enc.data_nascimento + '<br> email: ' + enc.email + '</p>';
+    } else {
+        paragrafo2.textContent = 'Elemento não encontrado';
+    } 
+});
+dados2 = [];
+
+botao_alterar.addEventListener('click', function() {
+    let element = document.getElementById('alterar');
+    let alt = dados.find(p => p.nome === element.value || p.cpf === element.value);
+    if (alt) {
+        let cpf = document.getElementById('cpf');
+        let nome = document.getElementById('nome');
+        let data_nascimento = document.getElementById('data_nascimento');
+        let email = document.getElementById('email');
+        alt.nome = nome.value;
+        alt.cpf = cpf.value;
+        alt.data_nascimento = data_nascimento.value;
+        alt.email = email.value;
+        paragrafo.innerHTML = '';
+        paragrafo2.innerHTML = '<br> <p>Elemento alterado: ' + alt.nome + '<br> - CPF: ' + alt.cpf + '<br> - data de nascimento: ' + alt.data_nascimento + '<br> email: ' + alt.email + '</p>';
+    } else {
+        paragrafo2.textContent = 'Elemento não encontrado';
+    }
+
+});
