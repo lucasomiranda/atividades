@@ -1,0 +1,20 @@
+async function buscaCEP(cep) {
+    try {
+            const retorno = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+            const dados = await retorno.json();
+
+            return dados
+    } catch (erro) {
+        console.erro('erro a o buscar o cep:', erro)
+    }
+    
+
+
+}
+
+async function executar() {
+    const cep = await buscaCEP('30140071');
+    document.writeln(JSON.stringify(cep));
+}
+
+executar()
